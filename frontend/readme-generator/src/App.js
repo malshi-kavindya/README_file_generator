@@ -53,7 +53,6 @@ function App() {
           ></textarea>
         </div>
 
-
         <div className="mb-3">
           <label className="form-label">Technologies Used</label>
           <input
@@ -86,7 +85,6 @@ function App() {
           <button className="btn btn-success mt-2" onClick={() => navigator.clipboard.writeText(readme)}>
             Copy to Clipboard
           </button>
-          
         </div>
       )}
     </div>
