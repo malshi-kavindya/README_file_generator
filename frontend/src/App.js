@@ -2,16 +2,27 @@ import { useState } from "react";
 
 function App() {
   const [formData, setFormData] = useState({
-    projectName: "",
-    description: "",
-    technologies: "",
+    name: "",
+    titleLine: "",
+    bio: "",
+    githubUsername: "",
+    languages: "",
+    frameworks: "",
+    tools: "",
+    learning: "",
+    hobbies: "",
+    currentProject: "",
+    linkedin: "",
+    twitter: "",
     github: "",
+    quote: ""
   });
 
   const [readme, setReadme] = useState("");
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = async (e) => {
@@ -27,55 +38,29 @@ function App() {
 
   return (
     <div className="container mx-auto p-5">
-      <h2 className="text-3xl font-bold text-center mb-4">GitHub README Generator</h2>
+      <h2 className="text-3xl font-bold text-center mb-4">GitHub Profile README Generator</h2>
 
-      <form onSubmit={handleSubmit} className="bg-white p-5 shadow-lg rounded-lg">
-        <div className="mb-3">
-          <label className="form-label">Project Name</label>
-          <input
-            type="text"
-            name="projectName"
-            className="form-control"
-            placeholder="Enter project name"
-            onChange={handleChange}
-            required
-          />
-        </div>
+      <form onSubmit={handleSubmit} className="bg-white p-5 shadow-lg rounded-lg space-y-4">
+        <input name="name" placeholder="Full Name" className="form-control" onChange={handleChange} />
+        <input name="titleLine" placeholder="Title Line (e.g. Web Dev | Tech Lover)" className="form-control" onChange={handleChange} />
+        <textarea name="bio" placeholder="Short Bio" className="form-control" onChange={handleChange} />
 
-        <div className="mb-3">
-          <label className="form-label">Description</label>
-          <textarea
-            name="description"
-            className="form-control"
-            placeholder="Enter project description"
-            onChange={handleChange}
-            required
-          ></textarea>
-        </div>
+        <input name="githubUsername" placeholder="GitHub Username (for stats)" className="form-control" onChange={handleChange} />
+        <input name="languages" placeholder="Languages (e.g. JS, Python)" className="form-control" onChange={handleChange} />
+        <input name="frameworks" placeholder="Frameworks & Libraries (e.g. React, Bootstrap)" className="form-control" onChange={handleChange} />
+        <input name="tools" placeholder="Tools & Platforms (e.g. Git, VS Code)" className="form-control" onChange={handleChange} />
 
-        <div className="mb-3">
-          <label className="form-label">Technologies Used</label>
-          <input
-            type="text"
-            name="technologies"
-            className="form-control"
-            placeholder="Comma-separated (e.g., React, FastAPI)"
-            onChange={handleChange}
-          />
-        </div>
+        <input name="learning" placeholder="Currently learning..." className="form-control" onChange={handleChange} />
+        <input name="hobbies" placeholder="Hobbies / Side interests" className="form-control" onChange={handleChange} />
+        <input name="currentProject" placeholder="Current project you're working on" className="form-control" onChange={handleChange} />
 
-        <div className="mb-3">
-          <label className="form-label">GitHub Profile URL</label>
-          <input
-            type="url"
-            name="github"
-            className="form-control"
-            placeholder="https://github.com/yourusername"
-            onChange={handleChange}
-          />
-        </div>
+        <input name="linkedin" placeholder="LinkedIn URL" className="form-control" onChange={handleChange} />
+        <input name="twitter" placeholder="Twitter URL" className="form-control" onChange={handleChange} />
+        <input name="github" placeholder="GitHub Profile URL" className="form-control" onChange={handleChange} />
 
-        <button type="submit" className="btn btn-primary w-full">Generate README</button>
+        <input name="quote" placeholder='Custom Quote (e.g. "Code is like humor...")' className="form-control" onChange={handleChange} />
+
+        <button type="submit" className="btn btn-primary w-full mt-3">Generate README</button>
       </form>
 
       {readme && (
